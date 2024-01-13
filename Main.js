@@ -1,46 +1,42 @@
-var counter = 0;
-function increase(){
-    counter++;
-document.getElementById("counter-value").innerHTML = counter
-}
-function decrease(){
-    counter--;
-document.getElementById("counter-value").innerHTML = counter
-}
+// jQuery document ready function
+$(document).ready(function() {
+    // Handle form submission
+    $('form').on('submit', function(e) {
+        e.preventDefault(); // Prevent the form from submitting normally
 
+        // Get form data
+        var formData = $(this).serializeArray();
 
-var counter1 = 0;
-function increase1(){
-    counter1++;
-document.getElementById("counter-value1").innerHTML = counter1
-}
-function decrease1(){
-    counter1--;
-document.getElementById("counter-value1").innerHTML = counter1
-}
+        // Convert form data to JSON
+        var jsonData = {};
+        $.each(formData, function() {
+            if (jsonData[this.name]) {
+                if (!jsonData[this.name].push) {
+                    jsonData[this.name] = [jsonData[this.name]];
+                }
+                jsonData[this.name].push(this.value || '');
+            } else {
+                jsonData[this.name] = this.value || '';
+            }
+        });
 
+        // Create QR code with form data
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: JSON.stringify(jsonData),
+            width: 128,
+            height: 128
+        });
 
-var counter2 = 0;
-function increase2(){
-    counter2++;
-document.getElementById("counter-value2").innerHTML = counter2
-}
-function decrease2(){
-    counter2--;
-document.getElementById("counter-value2").innerHTML = counter2
-}
+        // Show the QR code
+        $('#qrcode').show();
+    });
 
+    // Handle clear form button click
+    $('#clearForm').on('click', function() {
+        // Clear the form
+        $('form')[0].reset();
 
-var counter3 = 0;
-function increase3(){
-    counter3++;
-document.getElementById("counter-value3").innerHTML = counter3
-}
-function decrease3(){
-    counter3--;
-document.getElementById("counter-value3").innerHTML = counter3
-}
-
-function submit(){
-    ///Nikhil, need halp. How to create QR? I made buttons work though :D
-}
+        // Remove the QR code
+        $('#qrcode').empty().hide();
+    });
+});

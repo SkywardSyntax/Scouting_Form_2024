@@ -1,120 +1,125 @@
-<!DOCTYPE html> 
-<html>
-    <head>
-        <title>Document</title>
-        <script src="Main.js"></script> 
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FRC Scouting Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body>
-    <center>
-    <body bgcolor="Chocolate"></body>
-    <h1 style="color:whitesmoke;"><bold>Scouting Form</bold></h1>
-    <form>
-        <label for="fname"><h3 style="color:whitesmoke;">Scouter's Name:</h3></label>
-        <input type="text" id="fname" name="fname"><br>
-    </form>
-    <p> <br> </p>
-    <h3 style="color:whitesmoke"> Team Scouting</h3>
-    <form>
-        <input type="radio" id="Red1" name="Robot_Scouting" value="Red1">
-        <label for="Red1" style="color:whitesmoke">Red Left</label><br>
-        <input type="radio" id="Red2" name="Robot_Scouting" value="Red2">
-        <label for="Red2" style="color:whitesmoke">Red Center</label><br>
-        <input type="radio" id="Red3" name="Robot_Scouting" value="Red3">
-        <label for="Red3" style="color:whitesmoke">Red Right</label><br>
-        
-        <input type="radio" id="Blue1" name="Robot_Scouting" value="Blue1">
-        <label for="Blue1" style="color:whitesmoke">Blue Left</label><br>
-        <input type="radio" id="Blue2" name="Robot_Scouting" value="Blue2">
-        <label for="Blue2" style="color:whitesmoke">Blue Center</label><br>
-        <input type="radio" id="Blue3" name="Robot_Scouting" value="Blue3">
-        <label for="Blue3" style="color:whitesmoke">Blue Right</label><br>
-    </form>
-    <p> <br> </p>
-    <form>
-        <label for="tNumber"> <h3 style="color:whitesmoke;"> Team Number: </h3> </label>
-        <input type="text" id="tNumber" name="tNumber"><br>
-    </form>
-    <p> <br> </p>
-    <form>
-        <label for="mNumber"> <h3 style="color:whitesmoke;"> Match Number: </h3> </label>
-        <input type="text" id="mNumber" name="mNumber"><br>
-    </form>
-    <p> <br> <br> <br> <br> </p>
-<h1 style="color:whitesmoke;"> Auton Points </h1>
-    <div>
-        <h3 style="color:whitesmoke;"> Amp Scores </h3>
-        <button id="increment-btn" onclick="increase()">+</button>
-        <div id="counter-value">0</div>
-        <button id="decrement-btn" onclick="decrease()">-</button>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="Main.js"></script>
+
+    <script type="text/javascript" src="qrcode.js"></script>
+    <div class="container mt-5">
+        <h1 class="text-center">FRC Scouting Form</h1>
+        <form>
+            <div class="form-group">
+                <label for="scouterName">Scouter's Name</label>
+                <input type="text" class="form-control" id="scouterName" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="teamScouting">Team Scouting</label>
+                <select class="form-control" id="teamScouting">
+                    <option>Red Left</option>
+                    <option>Red Center</option>
+                    <option>Red Right</option>
+                    <option>Blue Left</option>
+                    <option>Blue Center</option>
+                    <option>Blue Right</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="teamNumber">Team Number</label>
+                <input type="number" class="form-control" id="teamNumber" placeholder="Enter team number">
+            </div>
+            <div class="form-group">
+                <label for="matchNumber">Match Number</label>
+                <input type="number" class="form-control" id="matchNumber" placeholder="Enter match number">
+            </div>
+            <h3>Auton</h3>
+            <div class="form-group">
+                <label for="ampScoresAuton">Amp Scores</label>
+                <input type="number" class="form-control" id="ampScoresAuton">
+            </div>
+            <div class="form-group">
+                <label for="speakerScoresAuton">Speaker Scores</label>
+                <input type="number" class="form-control" id="speakerScoresAuton">
+            </div>
+            <h3>Tele-Op</h3>
+            <div class="form-group">
+                <label for="ampScoresTeleOp">Amp Scores</label>
+                <input type="number" class="form-control" id="ampScoresTeleOp">
+            </div>
+            <div class="form-group">
+                <label for="speakerScoresTeleOp">Speaker Scores</label>
+                <input type="number" class="form-control" id="speakerScoresTeleOp">
+            </div>
+            <h3>End-Game</h3>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="onStage">
+                <label class="form-check-label" for="onStage">On-Stage</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="harmony1">
+                <label class="form-check-label" for="harmony1">Harmony (1 other bot)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="harmony2">
+                <label class="form-check-label" for="harmony2">Harmony (2 other bots)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="park">
+                <label class="form-check-label" for="park">Park</label>
+            </div>
+
+
+            <h3>Personal Reflection</h3>
+            <div class="form-group">
+                <label for="personalReflection">Rating</label>
+                <select class="form-control" id="personalReflection">
+                    <option>5 stars</option>
+                    <option>4 stars</option>
+                    <option>3 stars</option>
+                    <option>2 stars</option>
+                    <option>1 star</option>
+                </select>
+            </div>
+
+            <h3>Robot-Scoring Preference</h3>
+            <div class="form-group">
+                <label for="scoringPreference">Preference</label>
+                <select class="form-control" id="scoringPreference">
+                    <option>Amp</option>
+                    <option>Speaker</option>
+                </select>
+            </div>
+
+            <h3>Intake Location</h3>
+            <div class="form-group">
+                <label for="intakeLocation">Location</label>
+                <select class="form-control" id="intakeLocation">
+                    <option>The Source</option>
+                    <option>Ground</option>
+                </select>
+            </div>
+
+            <h3>Comments</h3>
+            <div class="form-group">
+                <label for="comments">Your Comments</label>
+                <textarea class="form-control" id="comments" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" id="clearForm" class="btn btn-secondary">Clear Form</button>
+            <button type="button" id="presentDataset" class="btn btn-secondary">Present Dataset</button>
+        </form>
+
+        <div id="QRC"></div>
     </div>
-<p> </p>
-    <div>
-        <h3 style="color:whitesmoke;"> Speaker Scores </h3>
-        <button id="increment-btn" onclick="increase1()">+</button>
-        <div id="counter-value1">0</div>
-        <button id="decrement-btn" onclick="decrease1()">-</button>
-    </div>
-<p> </p>
-<h1 style="color:whitesmoke;"> Tele-Op Points </h1>
-    <div>
-        <h3 style="color:whitesmoke;"> Amp Scores </h3>
-        <button id="increment-btn" onclick="increase2()">+</button>
-        <div id="counter-value2">0</div>
-        <button id="decrement-btn" onclick="decrease2()">-</button>
-    </div>
-    <p> </p>
-    <div>
-        <h3 style="color:whitesmoke;"> Speaker Scores </h3>
-        <button id="increment-btn" onclick="increase3()">+</button>
-        <div id="counter-value3">0</div>
-        <button id="decrement-btn" onclick="decrease3()">-</button>
-    </div>
-<p> <br> <br> <br> <br> </p>
-<h1 style="color:whitesmoke;"> End/Post Game </h1> <br>
-<form>
-<h3 style="color:whitesmoke;">Final Points</h3>
-    <input type="checkbox" id="C1" name="C1" value="C1">
-    <label for="C1" style="color:whitesmoke;"> On Stage  </label><br>
-    <input type="checkbox" id="C2" name="C2" value="C2">
-    <label for="C2" style="color:whitesmoke;"> Sync-ed </label><br>
-    <input type="checkbox" id="C3" name="C3" value="C3">
-    <label for="C3" style="color:whitesmoke;"> Disc Thrown (landed) </label><br>
-</form>
-<h3 style="color:whitesmoke;">Personal Reflection on Team</h3>
-    <form>
-        <input type="radio" id="1star" name="Robot_Rating" value="1star">
-        <label for="1star" style="color:whitesmoke;">Not Ideal</label><br>
-        <input type="radio" id="2star" name="Robot_Rating" value="2star">
-        <label for="2star" style="color:whitesmoke;">Satisfactory</label><br>
-        <input type="radio" id="3star" name="Robot_Rating" value="3star">
-        <label for="3star" style="color:whitesmoke;">Average</label><br>
-        <input type="radio" id="4star" name="Robot_Rating" value="4star">
-        <label for="4star" style="color:whitesmoke;">Great</label><br>
-        <input type="radio" id="5star" name="Robot_Rating" value="5star">
-        <label for="5star" style="color:whitesmoke;">Splendid</label><br>
-    </form>
-<h3 style="color:whitesmoke;">Robot traveled on the...</h3>
-    <input type="radio" id="amp-side" name="Robot_Pathing" value="amp-side">
-        <label for="amp-side" style="color:whitesmoke;">Amp-side of the field</label><br>
-        <input type="radio" id="human-player" name="Robot_Pathing" value="human-player">
-        <label for="human-player" style="color:whitesmoke;">Human player-side of field</label><br>
-        <input type="radio" id="center" name="Robot_Pathing" value="center">
-        <label for="center" style="color:whitesmoke;">Center of the field</label><br>
-    <form>
-    <h3 style="color:whitesmoke;">Game pieces were picked up...</h3>
-    <input type="radio" id="human-sup" name="Robot_Method" value="human-sup">
-        <label for="human-sup" style="color:whitesmoke;">From the Human Player</label><br>
-        <input type="radio" id="field" name="Robot_Method" value="field">
-        <label for="field" style="color:whitesmoke;">From the Field</label><br>
-        <input type="radio" id="mix" name="Robot_Method" value="mix">
-        <label for="mix" style="color:whitesmoke;">From both</label><br>
-    <form>
-        <label for="comments"><h3 style="color:whitesmoke;">Any feedback or comments?:</h3></label>
-        <input type="text" id="comments" name="comments"><br>
-    </form>
-    <form>
-        <button id="Submit" onclick="submit()">Submit Form</button>
-    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
-</center>
 </html>
